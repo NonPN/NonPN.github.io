@@ -12,6 +12,7 @@ const Box = styled.div`
 const Line = styled.div`
     display: block;
     text-align: center;
+    padding-top: 50px;
 `
 
 const Name = styled.h1`
