@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Head from './components/head'
+import About from './components/about'
 import styled from 'styled-components'
 
 const Block = styled.div`
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <Block>
         <Head />
+        <About />
       </Block>
     );
   }
