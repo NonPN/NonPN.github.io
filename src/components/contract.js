@@ -42,8 +42,22 @@ const Title = styled.h3`
     margin-right: 30px;
     padding-top: 10px;
 `
+const TdHover = styled.td`
+    :hover {
+        cursor: pointer;
+    }
+`
 
 export default class Contract extends Component {
+
+    fbClicked = ()=> {
+        window.location.href = 'https://www.facebook.com/nonPuthikanon';
+    }
+
+    ghClicked = ()=> {
+        window.location.href = 'https://github.com/NonPN';
+    }
+
     render() {
         return(
             <Block>
@@ -58,15 +72,15 @@ export default class Contract extends Component {
                         <tbody>
                             <tr>
                                 <th>Email</th>
-                                <td>non9441@gmail.com<Ico src={mail}/></td>
+                                <TdHover>non9441@gmail.com<Ico src={mail}/></TdHover>
                             </tr>
                             <tr>
                                 <th>Facebook</th>
-                                <td>Non Puthikanon<Ico src={fbico}/></td>
+                                <TdHover onClick={this.fbClicked}>Non Puthikanon<Ico src={fbico}/></TdHover>
                             </tr>
                             <tr>
                                 <th>Github</th>
-                                <td>NonNP<Ico src={github}/></td>
+                                <TdHover onClick={this.ghClicked}>NonNP<Ico src={github}/></TdHover>
                             </tr>
                         </tbody>
                     </Table>
