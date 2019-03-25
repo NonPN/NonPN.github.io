@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Head from './components/head'
 import About from './components/about'
 import Profile from './components/profile'
-import styled from 'styled-components'
 import Contract from './components/contract'
+import Skill from './components/skill'
+import styled from 'styled-components'
 import {Fade} from 'reactstrap'
 
 const Block = styled.div`
@@ -39,6 +40,7 @@ class App extends Component {
             <Profile />
             <Contract />
           </Row>
+          <Skill />
         </Fade>
       </Block>
     );

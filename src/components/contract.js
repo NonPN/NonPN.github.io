@@ -5,6 +5,7 @@ import contract from '../images/contract.png'
 import fbico from '../images/facebook.svg'
 import github from '../images/github.svg'
 import mail from '../images/mail.svg'
+import phone from '../images/phone.svg'
 
 const Block = styled.div`
     width: 500px;
@@ -80,7 +81,11 @@ export default class Contract extends Component {
                             </tr>
                             <tr>
                                 <th>Github</th>
-                                <TdHover onClick={this.ghClicked}>NonNP<Ico src={github}/></TdHover>
+                                <TdHover onClick={this.ghClicked}>NonPN<Ico src={github}/></TdHover>
+                            </tr>
+                            <tr>
+                                <th>Tel.</th>
+                                <TdHover>+66894408886<Ico src={phone}/></TdHover>
                             </tr>
                         </tbody>
                     </Table>

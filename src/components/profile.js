@@ -54,6 +54,10 @@ export default class Profile extends Component {
                                     <th>Nationality</th>
                                     <td>Thai</td>
                                 </tr>
+                                <tr>
+                                    <th>Sex</th>
+                                    <td>male</td>
+                                </tr>
                             </tbody>
                         </Table>
                 </InBlock>
