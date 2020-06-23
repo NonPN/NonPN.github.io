@@ -50,6 +50,7 @@ const BStroke = styled.div`
     height: 380px;
     margin-top: 100px;
     margin-bottom: 100px;
+    margin-right: 40px;
     background-color: white;
     border-radius: 50%;
     display: flex;

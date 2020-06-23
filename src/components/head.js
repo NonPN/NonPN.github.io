@@ -40,10 +40,12 @@ const Des = styled.h3`
 const RecLine = styled.div`
       width: 100%;
       display: flex;
+      padding-top: 15px;
 `
 const Rec = styled.div`
     width: 1%;
-    height: 50px;
+    margin: 10px;
+    height: 20px;
     box-sizing: border-box;
     background-color: #ff7f23;
     animation: 3s ease-out infinite pulse;
@@ -68,7 +70,7 @@ const Head = () => {
 
     const genRec = () => {
         let arr = []
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 50; i++) {
             arr.push(i)
         }
         return arr.map((i) => (
@@ -83,6 +85,9 @@ const Head = () => {
                     <Name>Non Puthikanon</Name>
                     <Des>Software Developer</Des>
                 </Line>
+                <RecLine>
+                    {genRec()}
+                </RecLine>
             </Box>
         </div>
     )

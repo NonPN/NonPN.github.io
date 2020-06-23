@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Table } from 'reactstrap'
-import contract from '../images/contract.png'
+import contact from '../images/contact.png'
 import fbico from '../images/facebook.svg'
 import github from '../images/github.svg'
 import mail from '../images/mail.svg'
@@ -9,29 +9,19 @@ import phone from '../images/phone.svg'
 
 const Block = styled.div`
     width: 500px;
-    border-top: solid 6px orange;
-    border-bottom: solid 6px orange;
 `
 const InBlock = styled.div`
     margin: 30px;
 `
 const Line = styled.div`
-    background-color: #5eb1ff;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    background-color: #24cfff;
     border-styled: solid;
-    padding-bottom: 10px;
 `
 const InLine = styled.div`
     display : flex;
+    justify-content: space-between;
+    align-items: center;
     margin-left: 20px;
-`
-
-const Img = styled.img`
-    height: 50px;
-    width: 45px;
-    padding-top: 10px;
-    margin-right: 30px;
 `
 const Ico = styled.img`
     float: right;
@@ -39,7 +29,8 @@ const Ico = styled.img`
 
 const Title = styled.h3`
     font-family: 'Archivo Black', sans-serif;
-    font-size: 35px;
+    font-size: 24px;
+    color: white;
     margin-right: 30px;
     padding-top: 10px;
 `
@@ -49,7 +40,7 @@ const TdHover = styled.td`
     }
 `
 
-export default class Contract extends Component {
+export default class Contact extends Component {
 
     fbClicked = () => {
         window.open('https://www.facebook.com/nonPuthikanon', '_blank')
@@ -65,15 +56,15 @@ export default class Contract extends Component {
                 <InBlock>
                     <Line>
                         <InLine>
-                            <Title>Contract Me</Title>
-                            <Img src={contract} />
+                            <Title>Contact</Title>
+                            <img style={{ width: 32, height: 32, marginRight: 15 }} src={contact} />
                         </InLine>
                     </Line>
                     <Table hover>
                         <tbody>
                             <tr>
                                 <th>Email</th>
-                                <TdHover>non9441@gmail.com<Ico src={mail} /></TdHover>
+                                <TdHover>non.pu@ku.th<Ico src={mail} /></TdHover>
                             </tr>
                             <tr>
                                 <th>Facebook</th>
