@@ -16,6 +16,10 @@ const Block = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
+
+    @media (max-width: 768px) {
+        width: 600px;
+    }
 `
 const Title = styled.h3`
     font-family: sans-serif;
@@ -26,6 +30,7 @@ const Title = styled.h3`
 `
 const Container = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 `
 const Head = styled.h1`
