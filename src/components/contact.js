@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Table } from 'reactstrap'
 import contact from '../images/contact.png'
-import fbico from '../images/facebook.svg'
+import linkedin from '../images/linkedin.svg'
 import github from '../images/github.svg'
 import mail from '../images/mail.svg'
 import phone from '../images/phone.svg'
@@ -42,8 +42,8 @@ const TdHover = styled.td`
 
 export default class Contact extends Component {
 
-    fbClicked = () => {
-        window.open('https://www.facebook.com/nonPuthikanon', '_blank')
+    linkClicked = () => {
+        window.open('https://www.linkedin.com/in/non-puthikanon/', '_blank')
     }
 
     ghClicked = () => {
@@ -67,8 +67,8 @@ export default class Contact extends Component {
                                 <TdHover>non.pu@ku.th<Ico src={mail} /></TdHover>
                             </tr>
                             <tr>
-                                <th>Facebook</th>
-                                <TdHover onClick={this.fbClicked}>Non Puthikanon<Ico src={fbico} /></TdHover>
+                                <th>LinkedIn</th>
+                                <TdHover onClick={this.linkClicked}>Non Puthikanon<Ico src={linkedin} /></TdHover>
                             </tr>
                             <tr>
                                 <th>Github</th>
