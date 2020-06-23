@@ -1,45 +1,99 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import me from '../images/me.svg'
+import me from '../images/me.jpg'
+import info from '../images/info.svg'
 
 const Body = styled.div`
     margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 `
-const Me = styled.img`
-    margin-right: 130px;
+const Me = styled.div`
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: url(${me});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    animation: 1s ease-out 0s 1 popIn;
+
+    @keyframes popIn {
+        0% {
+          transform: scale(0.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
 `
 const Des = styled.div`
-    height: 378px;
+    height: 360px;
     width: 580px;
-    margin-top: 80px;
     padding-top: 25px;
     padding-left: 50px;
     display: block;
-    background-color: #ffc896;
-    border-radius: 25px;
+    transition: transform 500ms ease-in;
+
+    &:hover {
+        transform: scale(1.1)
+    }
 `
 const InDes = styled.div`
-    background-color: #ffd6af;
     border-radius: 23px;
-    margin-right: 20px;
+    background: linear-gradient(315deg, #ffd6af, #9198e5);
+`
+const BStroke = styled.div`
+    width: 380px;
+    height: 380px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const Circle = styled.div`
+    width: 360px;
+    height: 360px;
+    background: linear-gradient(#24cfff, #9198e5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 1s ease-out 0s 1 zoomIn;
+
+    @keyframes zoomIn {
+        0% {
+          transform: scale(0.1);
+        }
+        80% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+`
+const Stroke = styled.div`
+    width: 325px;
+    height: 325px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 const P = styled.p`
-    margin: 25px;
+    margin: 30px;
+    color: white;
+    font-family: 'Archivo Black', sans-serif
 `
-
-const Rbot = styled.div`
-    height: 45px;
-    width: 45px;
-    content: "";
-    background-color: #ff9330;
-    border-left: 8px solid white;
-    border-top: 8px solid white;
-    float: right;
-`
-
 const Title = styled.h2`
     font-family: 'Archivo Black', sans-serif;
     font-size: 35px;
@@ -47,20 +101,25 @@ const Title = styled.h2`
 
 export default class About extends Component {
     render() {
-        return(
+        return (
             <Body>
-                <Me src={me}/>
+                <BStroke>
+                    <Circle>
+                        <Stroke>
+                            <Me />
+                        </Stroke>
+                    </Circle>
+                </BStroke>
                 <Des>
-                    <Title>About me</Title>
+                    <Title>About me<img style={{ width: 32, marginLeft: 10 }} src={info} /></Title>
                     <InDes>
                         <P>
                             <br />Hello, My name is Non Puthikanon.<br /><br />
-                            I am currently studying software and knowledge engineering<br /><br />
-                            at Kasetsart University. I am really eager to learn new stuff<br /><br />
+                            I am a freshly graduated student of software and knowledge engineering
+                            at Kasetsart University. <br></br>I am really eager to learn new stuff
                             and develop cool things.<br /><br />
                         </P>
                     </InDes>
-                    <Rbot />
                 </Des>
             </Body>
         )
