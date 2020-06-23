@@ -2,7 +2,7 @@
   "name": "github-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://NonPN.github.io/",
+  "homepage": "https://nonpn.github.io/",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
@@ -17,8 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -b master -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
