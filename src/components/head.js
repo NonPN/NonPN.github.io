@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import hbg from '../images/hbg.png'
 
 const Box = styled.div`
     width: 100%;
