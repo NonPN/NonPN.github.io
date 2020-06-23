@@ -29,12 +29,21 @@ const Line = styled.div`
 const Name = styled.h1`
     color: white;
     font-family: 'Archivo Black', sans-serif;
-    font-size: 60px;
+    font-size: 4em;
+
+    @media (max-width: 768px) {
+        font-size: 3em;
+    }
+
 `
 const Des = styled.h3`
     color: white;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 32px;
+    font-size: 2em;
+
+    @media (max-width: 768px) {
+        font-size: 1em;
+    }
 `
 const RecLine = styled.div`
       width: 100%;

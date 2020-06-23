@@ -7,8 +7,13 @@ const Body = styled.div`
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 const Me = styled.div`
     width: 300px;

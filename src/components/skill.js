@@ -13,8 +13,9 @@ import react from '../images/react.svg'
 import gear from '../images/gear.svg'
 
 const Block = styled.div`
-    margin-left: 470px;
-    margin-right: 470px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
 `
 const Title = styled.h3`
     font-family: sans-serif;
