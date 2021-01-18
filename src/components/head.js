@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components'
 
 const Box = styled.div`
     width: 100%;
-    height: 200px;
     align-items: center;
     background-color: #ff7f23;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -36,9 +35,14 @@ const Name = styled.h1`
     }
 
 `
+const Hr = styled.hr`
+    width: 20%;
+    min-width: 280px;
+    border-color: whitesmoke;
+`
 const Des = styled.h3`
     color: white;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Archivo Narrow', sans-serif;
     font-size: 2em;
 
     @media (max-width: 768px) {
@@ -60,16 +64,21 @@ const Rec = styled.div`
 
     @keyframes pulse {
         0% {
-            transform: scaleY(1)
+            transform: scaleY(1);
+            background-color: #ff7f23;
         }
         25% {
             transform: scaleY(1.5)
+        }
+        50% {
+            background-color: #ffd026
         }
         75% {
             transform: scaleY(0.5)
         }
         100% {
-            transform: scaleY(1)
+            transform: scaleY(1);
+            background-color: #ff7f23;
         }
     }
 `
@@ -91,11 +100,12 @@ const Head = () => {
             <Box>
                 <Line>
                     <Name>Non Puthikanon</Name>
+                    <Hr/>
                     <Des>Software Developer</Des>
+                    <RecLine>
+                        {genRec()}
+                    </RecLine>
                 </Line>
-                <RecLine>
-                    {genRec()}
-                </RecLine>
             </Box>
         </div>
     )

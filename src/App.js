@@ -9,6 +9,7 @@ import { Fade } from 'reactstrap'
 
 const Block = styled.div`
   display: block;
+  background: linear-gradient(#f2f2f2, white);
 `
 const Row = styled.div`
   width: 1000px;

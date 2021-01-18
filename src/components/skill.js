@@ -3,9 +3,8 @@ import Fade from 'react-reveal/Fade'
 import styled from 'styled-components'
 import java from '../images/java.svg'
 import js from '../images/js.svg'
-import cprog from '../images/cprog.svg'
+import gopher from '../images/gopher.svg'
 import csharp from '../images/csharp.svg'
-import python from '../images/python.svg'
 import html from '../images/html.svg'
 import css from '../images/css.svg'
 import node from '../images/node.svg'
@@ -13,9 +12,22 @@ import react from '../images/react.svg'
 import gear from '../images/gear.svg'
 
 const Block = styled.div`
+    margin: 2.5rem;
+    margin-top: 5rem;
     margin-left: auto;
     margin-right: auto;
+    padding: 1.5rem;
     width: 1000px;
+    position: relative;
+    border-style: solid;
+    border-width: 0.5rem;
+    border-radius: 2rem;
+    border-image: 
+    linear-gradient(
+      to bottom, 
+      #969ae4, 
+      #fbd5b1
+    ) 1;
 
     @media (max-width: 768px) {
         width: 600px;
@@ -35,11 +47,11 @@ const Container = styled.div`
 `
 const Head = styled.h1`
     font-family: 'Archivo Black', sans-serif;
-    background: -webkit-linear-gradient(90deg, #ff7f23, #ffba4a 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 20px;
-    padding-top: 30px;
+    padding: 1rem;
+    background: #fcfbfc;
+    color: #ffba4a;
+    position: absolute;
+    top: -10%;
 `
 const Gear = styled.img`
     width: 48px;
@@ -66,13 +78,13 @@ export default class Skill extends Component {
         return (
             <Fade bottom>
                 <Block>
-                    <Head>SKILLS<Gear src={gear} /></Head>
+                    <Head>SKILLS</Head>
                     <Title>Programming Language</Title>
                     <Container>
                         <Logo src={java} />
                         <Logo src={js} />
                         <Logo src={csharp} />
-                        <Logo src={python} />
+                        <Logo src={gopher} />
                     </Container>
                     <hr />
                     <Title>Web appilcation</Title>

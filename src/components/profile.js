@@ -11,7 +11,6 @@ const InBlock = styled.div`
 `
 const Line = styled.div`
     background-color: #24cfff;
-    border-styled: solid;
 `
 const InLine = styled.div`
     margin-left: 20px;
@@ -54,7 +53,7 @@ export default class Profile extends Component {
                                 <td>Thai</td>
                             </tr>
                             <tr>
-                                <th>Sex</th>
+                                <th>Gender</th>
                                 <td>male</td>
                             </tr>
                         </tbody>

@@ -40,11 +40,6 @@ const Des = styled.div`
     padding-top: 25px;
     padding-left: 50px;
     display: block;
-    transition: transform 500ms ease-in;
-
-    &:hover {
-        transform: scale(1.1)
-    }
 `
 const InDes = styled.div`
     border-radius: 23px;
@@ -56,7 +51,7 @@ const BStroke = styled.div`
     margin-top: 100px;
     margin-bottom: 100px;
     margin-right: 40px;
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -89,7 +84,7 @@ const Circle = styled.div`
 const Stroke = styled.div`
     width: 325px;
     height: 325px;
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -98,7 +93,7 @@ const Stroke = styled.div`
 const P = styled.p`
     margin: 30px;
     color: white;
-    font-family: 'Archivo Black', sans-serif
+    font-family: 'Archivo Narrow', sans-serif;
 `
 const Title = styled.h2`
     font-family: 'Archivo Black', sans-serif;
