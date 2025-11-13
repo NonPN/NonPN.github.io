@@ -1,22 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatSidebar from "../components/chat/ChatSidebar";
 import MessageList from "../components/chat/MessageList";
 import ChatInput from "../components/chat/ChatInput";
+import type { Message } from "@/types/chat";
+import { useChatStore } from "@/store/ChatStore";
 
-interface Message {
-  id: string;
-  content: string;
-  isAI: boolean;
-  timestamp: string;
-}
+const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
 const Home = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const {
+    chats,
+    activeChatId,
+    getActiveChat,
+    setActiveChat,
+    addMessage,
+    createNewChat,
+  } = useChatStore();
   const [isLoading, setIsLoading] = useState(false);
-  const [conversations, setConversations] = useState([
-    { id: "1", title: "First Chat" },
-  ]);
-  const [activeConversationId, setActiveConversationId] = useState("1");
+  const messages = getActiveChat()?.messages || [];
 
   const handleSendMessage = async (content: string) => {
     setIsLoading(true);
@@ -29,7 +30,9 @@ const Home = () => {
       timestamp: new Date().toLocaleTimeString(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    const chatId = activeChatId || createNewChat();
+    setActiveChat(chatId);
+    addMessage(chatId, userMessage);
 
     try {
       // TODO: Implement AI response logic here
@@ -41,7 +44,7 @@ const Home = () => {
           isAI: true,
           timestamp: new Date().toLocaleTimeString(),
         };
-        setMessages((prev) => [...prev, aiMessage]);
+        addMessage(chatId, aiMessage);
         setIsLoading(false);
       }, 1000);
     } catch (error) {
@@ -51,23 +54,13 @@ const Home = () => {
   };
 
   const handleNewChat = () => {
-    const newId = (conversations.length + 1).toString();
-    setConversations((prev) => [
-      ...prev,
-      { id: newId, title: `New Chat ${newId}` },
-    ]);
-    setActiveConversationId(newId);
-    setMessages([]);
+    const chatId = createNewChat();
+    setActiveChat(chatId);
   };
 
   return (
     <div className="flex h-screen bg-base-100">
-      <ChatSidebar
-        onNewChat={handleNewChat}
-        conversations={conversations}
-        activeConversationId={activeConversationId}
-        onSelectConversation={setActiveConversationId}
-      />
+      <ChatSidebar onNewChat={handleNewChat} />
       <div className="flex-1 flex flex-col">
         <div className="bg-base-200 shadow-sm p-4 border-b border-base-300">
           <h1 className="text-xl text-base-content font-semibold">
