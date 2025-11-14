@@ -13,7 +13,7 @@ const Message = ({ content, isAI, timestamp }: MessageProps) => {
         }`}
       >
         <p className="text-sm md:text-base">{content}</p>
-        <span className="text-xs opacity-70 mt-1 block">{timestamp}</span>
+        <span className="mt-1 block text-xs opacity-70">{timestamp}</span>
       </div>
     </div>
   );

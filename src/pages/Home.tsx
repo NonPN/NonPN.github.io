@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ChatSidebar from "../components/chat/ChatSidebar";
 import MessageList from "../components/chat/MessageList";
 import ChatInput from "../components/chat/ChatInput";
 import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
 
-const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
+export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
 const Home = () => {
   const {
-    chats,
     activeChatId,
     getActiveChat,
     setActiveChat,
@@ -59,11 +58,16 @@ const Home = () => {
   };
 
   return (
-    <div className="flex h-screen bg-base-100">
+    <div className="drawer lg:drawer-open">
+      <input
+        id={SIDE_BAR_DRAWER_ID}
+        type="checkbox"
+        className="drawer-toggle"
+      />
       <ChatSidebar onNewChat={handleNewChat} />
-      <div className="flex-1 flex flex-col">
-        <div className="bg-base-200 shadow-sm p-4 border-b border-base-300">
-          <h1 className="text-xl text-base-content font-semibold">
+      <div className="drawer-content flex h-screen flex-col">
+        <div className="bg-base-200 border-base-300 h-15 border-b p-4 shadow-sm">
+          <h1 className="text-base-content text-xl font-semibold">
             AI Chat Assistant
           </h1>
         </div>
