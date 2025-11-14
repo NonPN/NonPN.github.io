@@ -13,7 +13,7 @@ interface MessageListProps {
 
 const MessageList = ({ messages }: MessageListProps) => {
   return (
-    <div className="flex-1 overflow-y-auto p-4">
+    <div className="max-w-full flex-1 overflow-y-auto p-4">
       {messages.map((message) => (
         <Message
           key={message.id}

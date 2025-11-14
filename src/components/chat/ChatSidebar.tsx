@@ -12,7 +12,8 @@ interface ChatSidebarProps {
 }
 
 const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
-  const { chatSideBar, activeChatId, setActiveChat } = useChatStore();
+  const { chatSideBar, activeChatId, setActiveChat, deleteChat } =
+    useChatStore();
 
   const onSelectChat = (id: string) => {
     setActiveChat(id);
@@ -83,11 +84,16 @@ const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
                     <label className="rounded-t-box rounded-b-none">
                       rename
                     </label>
-                    {/* <kbd className="kbd kbd-sm">⏎</kbd> */}
                   </li>
                   <hr className="border-base-300 border-t" />
                   <li>
-                    <label className="rounded-b-box rounded-t-none">
+                    <label
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deleteChat(id);
+                      }}
+                      className="rounded-b-box rounded-t-none"
+                    >
                       delete
                     </label>
                   </li>

@@ -9,6 +9,8 @@ export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
 const Home = () => {
   const {
+    chats,
+    chatSideBar,
     activeChatId,
     getActiveChat,
     setActiveChat,
@@ -29,7 +31,11 @@ const Home = () => {
       timestamp: new Date().toLocaleTimeString(),
     };
 
-    const chatId = activeChatId || createNewChat();
+    // Work around to ensure a chat exists
+    const chatId =
+      activeChatId && Object.keys(chats).length > 0 && chatSideBar.length > 0
+        ? activeChatId
+        : createNewChat();
     setActiveChat(chatId);
     addMessage(chatId, userMessage);
 

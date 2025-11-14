@@ -8,7 +8,7 @@ interface ChatStore {
   chatSideBar: { id: string; title: string }[];
   activeChatId: string | null;
   getActiveChat: () => Chat | null;
-  setActiveChat: (id: string) => void;
+  setActiveChat: (id: string | null) => void;
   createNewChat: () => string;
   deleteChat: (id: string) => void;
   addMessage: (chatId: string, msg: Message) => void;
@@ -48,22 +48,31 @@ export const useChatStore = create<ChatStore>()(
         const chats = get().chats;
         const { [id]: _, ...rest } = chats;
         const chatSideBar = get().chatSideBar.filter((c) => c.id !== id);
-        let activeChatId = get().activeChatId;
-        if (activeChatId === id) {
-          activeChatId = chatSideBar.length > 0 ? chatSideBar[0].id : null;
+        let newActiveChatId = get().activeChatId;
+        if (newActiveChatId === id) {
+          newActiveChatId = chatSideBar.length > 0 ? chatSideBar[0].id : null;
         }
+        // TODO: Come back to this bug where deleting a chat does not update activeChatId properly
         set({
           chats: rest,
           chatSideBar,
-          activeChatId,
+          activeChatId: newActiveChatId,
         });
       },
       addMessage: (chatId, msg) => {
         const chats = get().chats;
         const chat = chats[chatId];
+        const messages = chat.messages;
+        const isFirstMessage = messages.length === 0;
+        const title = isFirstMessage
+          ? msg.content.slice(0, 20) + (msg.content.length > 20 ? "..." : "")
+          : chat.title;
+
+        // Update chat with new message and possibly new title
         if (chat) {
           const updatedChat: Chat = {
             ...chat,
+            title,
             messages: [...chat.messages, msg],
           };
           set({
@@ -73,8 +82,16 @@ export const useChatStore = create<ChatStore>()(
             },
           });
         }
+
+        // Update sidebar title if it's the first message
+        if (isFirstMessage) {
+          const chatSideBar = get().chatSideBar.map((c) =>
+            c.id === chatId ? { ...c, title } : c,
+          );
+          set({ chatSideBar });
+        }
       },
     }),
-    { name: "chat-store" }
-  )
+    { name: "chat-store" },
+  ),
 );
