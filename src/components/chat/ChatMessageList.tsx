@@ -14,7 +14,7 @@ const ChatMessageList = ({ messages }: ChatMessageListProps) => {
   }, [messages]);
 
   return (
-    <div className="max-w-full flex-1 overflow-y-auto p-4">
+    <div className="max-w-full flex-1 overflow-y-auto px-5 py-5 lg:px-10">
       {messages.map((message) => (
         <ChatMessage
           key={message.id}

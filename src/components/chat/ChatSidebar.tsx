@@ -1,4 +1,5 @@
 import { SIDE_BAR_DRAWER_ID } from "@/pages/Home";
+import AboutCard from "@/components/about/AboutCard";
 import { useChatStore } from "@/store/ChatStore";
 import {
   TbLayoutSidebarLeftExpand,
@@ -43,19 +44,20 @@ const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
             />
           </label>
         </div>
-        <ul className="menu w-full grow">
-          <li className="mb-2">
-            <button
-              onClick={onNewChat}
-              className="btn btn-primary is-drawer-close:p-0"
-            >
-              <text className="is-drawer-close:hidden">New Chat</text>
-              <RiChatNewLine
-                className="is-drawer-open:ml-2 is-drawer-close:size-4"
-                size={20}
-              />
-            </button>
-          </li>
+        <div className="is-drawer-close:px-2 w-full px-3 pt-2">
+          <button
+            onClick={onNewChat}
+            className="btn btn-primary is-drawer-close:p-0 w-full"
+          >
+            <text className="is-drawer-close:hidden">New Chat</text>
+            <RiChatNewLine
+              className="is-drawer-open:ml-2 is-drawer-close:size-4"
+              size={20}
+            />
+          </button>
+          <AboutCard />
+        </div>
+        <ul className="menu w-full grow px-3">
           <text className="is-drawer-close:hidden px-4 py-2 opacity-50">
             Chats
           </text>

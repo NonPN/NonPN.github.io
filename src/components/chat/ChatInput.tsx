@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
-interface ChatInputProps {
+export interface ChatInputProps {
   onSendMessage: (message: string) => void;
   isLoading?: boolean;
+  className?: string;
 }
 
-const ChatInput = ({ onSendMessage, isLoading = false }: ChatInputProps) => {
+const ChatInput = ({
+  onSendMessage,
+  isLoading = false,
+  className,
+}: ChatInputProps) => {
   const [message, setMessage] = useState("");
   const [multipleLines, setMultipleLines] = useState(false);
   const ref = useRef<HTMLTextAreaElement>(null);
@@ -21,7 +26,7 @@ const ChatInput = ({ onSendMessage, isLoading = false }: ChatInputProps) => {
   };
 
   useEffect(() => {
-    if (message.includes("\n")) {
+    if (message.includes("\n") || message.length > 100) {
       setMultipleLines(true);
     } else {
       setMultipleLines(false);
@@ -32,7 +37,7 @@ const ChatInput = ({ onSendMessage, isLoading = false }: ChatInputProps) => {
   }, [message, isLoading]);
 
   return (
-    <div className="p-4">
+    <div className={`p-5 ${className || ""}`}>
       <div
         className={`bg-base-200 flex min-h-15 items-center gap-4 ${multipleLines ? "rounded-2xl" : "rounded-full"} p-5 shadow-lg inset-shadow-sm`}
       >

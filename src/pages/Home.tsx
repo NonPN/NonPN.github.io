@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatSidebar from "@/components/chat/ChatSidebar";
 import ChatMessageList from "@/components/chat/ChatMessageList";
 import ChatInput from "@/components/chat/ChatInput";
 import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
 import { RiMenuFold2Line } from "react-icons/ri";
+import ChatAbout from "@/components/about/ChatAbout";
 
 export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
 const Home = () => {
   const {
-    chats,
     chatSideBar,
     activeChatId,
     getActiveChat,
@@ -19,6 +19,7 @@ const Home = () => {
     createNewChat,
   } = useChatStore();
   const [isLoading, setIsLoading] = useState(false);
+  const [isNewChat, setIsNewChat] = useState(false);
   const messages = getActiveChat()?.messages || [];
 
   const handleSendMessage = async (content: string) => {
@@ -33,12 +34,12 @@ const Home = () => {
     };
 
     // Work around to ensure a chat exists
-    const chatId =
-      activeChatId && Object.keys(chats).length > 0 && chatSideBar.length > 0
-        ? activeChatId
-        : createNewChat();
+    const chatId = isNewChat
+      ? createNewChat()
+      : activeChatId || createNewChat();
     setActiveChat(chatId);
     addMessage(chatId, userMessage);
+    setIsNewChat(false);
 
     try {
       // TODO: Implement AI response logic here
@@ -60,9 +61,19 @@ const Home = () => {
   };
 
   const handleNewChat = () => {
-    const chatId = createNewChat();
-    setActiveChat(chatId);
+    setIsNewChat(true);
   };
+
+  useEffect(() => {
+    if (chatSideBar.length === 0) {
+      setIsNewChat(true);
+    } else if (
+      !chatSideBar.some((c) => c.id === activeChatId) &&
+      chatSideBar.length > 0
+    ) {
+      setActiveChat(chatSideBar[0].id);
+    }
+  }, [chatSideBar]);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -81,8 +92,19 @@ const Home = () => {
             AI Chat Assistant
           </h1>
         </div>
-        <ChatMessageList messages={messages} />
-        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+        {isNewChat ? (
+          <>
+            <ChatAbout onSendMessage={handleSendMessage} />
+          </>
+        ) : (
+          <>
+            <ChatMessageList messages={messages} />
+            <ChatInput
+              onSendMessage={handleSendMessage}
+              isLoading={isLoading}
+            />
+          </>
+        )}
       </div>
     </div>
   );
