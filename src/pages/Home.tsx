@@ -4,6 +4,7 @@ import ChatMessageList from "@/components/chat/ChatMessageList";
 import ChatInput from "@/components/chat/ChatInput";
 import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
+import { RiMenuFold2Line } from "react-icons/ri";
 
 export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
@@ -72,7 +73,10 @@ const Home = () => {
       />
       <ChatSidebar onNewChat={handleNewChat} />
       <div className="drawer-content flex h-screen flex-col">
-        <div className="bg-base-200 border-base-300 h-15 border-b p-4 shadow-sm">
+        <div className="bg-base-200 border-base-300 flex h-15 gap-5 border-b p-4 shadow-sm">
+          <label htmlFor={SIDE_BAR_DRAWER_ID} className="lg:hidden">
+            <RiMenuFold2Line size={25} />
+          </label>
           <h1 className="text-base-content text-xl font-semibold">
             AI Chat Assistant
           </h1>

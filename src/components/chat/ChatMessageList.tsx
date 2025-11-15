@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import type { Message } from "@/types/chat";
 
@@ -6,6 +7,12 @@ interface ChatMessageListProps {
 }
 
 const ChatMessageList = ({ messages }: ChatMessageListProps) => {
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="max-w-full flex-1 overflow-y-auto p-4">
       {messages.map((message) => (
@@ -17,6 +24,7 @@ const ChatMessageList = ({ messages }: ChatMessageListProps) => {
           timestamp={message.timestamp}
         />
       ))}
+      <div ref={bottomRef} />
     </div>
   );
 };
