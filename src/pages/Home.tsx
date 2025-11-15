@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ChatSidebar from "../components/chat/ChatSidebar";
-import MessageList from "../components/chat/MessageList";
-import ChatInput from "../components/chat/ChatInput";
+import ChatSidebar from "@/components/chat/ChatSidebar";
+import ChatMessageList from "@/components/chat/ChatMessageList";
+import ChatInput from "@/components/chat/ChatInput";
 import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
 
@@ -77,7 +77,7 @@ const Home = () => {
             AI Chat Assistant
           </h1>
         </div>
-        <MessageList messages={messages} />
+        <ChatMessageList messages={messages} />
         <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
       </div>
     </div>

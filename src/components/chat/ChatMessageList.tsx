@@ -1,22 +1,17 @@
-import Message from "./Message";
+import ChatMessage from "./ChatMessage";
+import type { Message } from "@/types/chat";
 
-interface Message {
-  id: string;
-  content: string;
-  isAI: boolean;
-  timestamp: string;
-}
-
-interface MessageListProps {
+interface ChatMessageListProps {
   messages: Message[];
 }
 
-const MessageList = ({ messages }: MessageListProps) => {
+const ChatMessageList = ({ messages }: ChatMessageListProps) => {
   return (
     <div className="max-w-full flex-1 overflow-y-auto p-4">
       {messages.map((message) => (
-        <Message
+        <ChatMessage
           key={message.id}
+          id={message.id}
           content={message.content}
           isAI={message.isAI}
           timestamp={message.timestamp}
@@ -26,4 +21,4 @@ const MessageList = ({ messages }: MessageListProps) => {
   );
 };
 
-export default MessageList;
+export default ChatMessageList;
