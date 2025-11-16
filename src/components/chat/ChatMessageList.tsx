@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
-import Me from "@/assets/me.jpeg";
 
 interface ChatMessageListProps {
   messages: Message[];
