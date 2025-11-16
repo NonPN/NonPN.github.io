@@ -13,13 +13,14 @@ const Home = () => {
   const {
     chatSideBar,
     activeChatId,
+    isNewChat,
     getActiveChat,
     setActiveChat,
+    setIsNewChat,
     addMessage,
     createNewChat,
   } = useChatStore();
   const [isLoading, setIsLoading] = useState(false);
-  const [isNewChat, setIsNewChat] = useState(false);
   const messages = getActiveChat()?.messages || [];
 
   const handleSendMessage = async (content: string) => {

@@ -7,8 +7,10 @@ interface ChatStore {
   chats: Record<string, Chat>;
   chatSideBar: { id: string; title: string }[];
   activeChatId: string | null;
+  isNewChat: boolean;
   getActiveChat: () => Chat | null;
   setActiveChat: (id: string | null) => void;
+  setIsNewChat: (isNew: boolean) => void;
   createNewChat: () => string;
   deleteChat: (id: string) => void;
   addMessage: (chatId: string, msg: Message) => void;
@@ -20,11 +22,13 @@ export const useChatStore = create<ChatStore>()(
       chats: {},
       chatSideBar: [],
       activeChatId: null,
+      isNewChat: true,
       getActiveChat: () => {
         const { chats, activeChatId } = get();
         return chats[activeChatId || ""] || null;
       },
       setActiveChat: (id) => set({ activeChatId: id }),
+      setIsNewChat: (isNew: boolean) => set({ isNewChat: isNew }),
       createNewChat: () => {
         const chats = get().chats;
         const id = nanoid();

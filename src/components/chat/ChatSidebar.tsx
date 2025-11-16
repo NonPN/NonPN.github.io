@@ -7,18 +7,32 @@ import {
 } from "react-icons/tb";
 import { RiChatNewLine } from "react-icons/ri";
 import { BsThreeDots } from "react-icons/bs";
+import { useEffect } from "react";
 
 interface ChatSidebarProps {
   onNewChat: () => void;
 }
 
 const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
-  const { chatSideBar, activeChatId, setActiveChat, deleteChat } =
-    useChatStore();
+  const {
+    chatSideBar,
+    activeChatId,
+    isNewChat,
+    setActiveChat,
+    setIsNewChat,
+    deleteChat,
+  } = useChatStore();
 
   const onSelectChat = (id: string) => {
     setActiveChat(id);
+    setIsNewChat(false);
   };
+
+  useEffect(() => {
+    if (isNewChat) {
+      setActiveChat(null);
+    }
+  }, [isNewChat]);
 
   return (
     <div className="drawer-side is-drawer-close:overflow-visible">
