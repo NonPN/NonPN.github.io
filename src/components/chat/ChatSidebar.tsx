@@ -46,7 +46,7 @@ const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
           <label
             htmlFor={SIDE_BAR_DRAWER_ID}
             aria-label="open sidebar"
-            className="btn btn-square btn-ghost is-drawer-close:w-full is-drawer-open:m-2"
+            className="btn btn-square btn-ghost hover:bg-base-300 is-drawer-close:w-full is-drawer-close:rounded-none is-drawer-open:m-2"
           >
             <TbLayoutSidebarLeftExpand
               className="is-drawer-open:hidden"
@@ -83,34 +83,39 @@ const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
                 activeChatId === id ? "bg-gray-600" : "hover:bg-gray-700"
               }`}
             >
-              <text className="flex-1">{title}</text>
-              <div className="dropdown dropdown-bottom dropdown-end">
+              <span className="flex-1">{title}</span>
+              <div
+                className="dropdown dropdown-bottom dropdown-end"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 <div
                   tabIndex={0}
                   role="button"
-                  className="label invisible m-1 group-hover:visible"
+                  className="label hover:bg-base-100 invisible m-1 rounded-sm p-1 group-hover:visible"
                 >
                   <BsThreeDots size={16} />
                 </div>
                 <ul
                   tabIndex={-1}
-                  className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm"
+                  className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-lg inset-shadow-xs shadow-black inset-shadow-gray-600"
                 >
                   <li>
                     <label className="rounded-t-box rounded-b-none">
-                      rename
+                      Rename
                     </label>
                   </li>
                   <hr className="border-base-300 border-t" />
                   <li>
                     <label
                       onClick={(e) => {
-                        e.preventDefault();
+                        e.stopPropagation();
                         deleteChat(id);
                       }}
                       className="rounded-b-box rounded-t-none"
                     >
-                      delete
+                      Delete
                     </label>
                   </li>
                 </ul>

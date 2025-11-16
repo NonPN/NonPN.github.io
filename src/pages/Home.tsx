@@ -6,6 +6,7 @@ import type { Message } from "@/types/chat";
 import { useChatStore } from "@/store/ChatStore";
 import { RiMenuFold2Line } from "react-icons/ri";
 import ChatAbout from "@/components/about/ChatAbout";
+import { BsThreeDots } from "react-icons/bs";
 
 export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
 
@@ -21,6 +22,7 @@ const Home = () => {
     setIsLoading,
     addMessage,
     createNewChat,
+    deleteChat,
   } = useChatStore();
   const messages = getActiveChat()?.messages || [];
 
@@ -86,13 +88,43 @@ const Home = () => {
       />
       <ChatSidebar onNewChat={handleNewChat} />
       <div className="drawer-content flex h-screen flex-col">
-        <div className="bg-base-200 border-base-300 flex h-15 gap-5 border-b p-4 shadow-sm">
-          <label htmlFor={SIDE_BAR_DRAWER_ID} className="lg:hidden">
-            <RiMenuFold2Line size={25} />
-          </label>
-          <h1 className="text-base-content text-xl font-semibold">
-            AI Chat Assistant
-          </h1>
+        <div className="bg-base-200 border-base-300 flex h-15 items-center justify-between gap-5 border-b p-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <label htmlFor={SIDE_BAR_DRAWER_ID} className="lg:hidden">
+              <RiMenuFold2Line size={25} />
+            </label>
+            <h1 className="text-base-content text-xl font-semibold">
+              AI Chat Assistant
+            </h1>
+          </div>
+          <div className="dropdown dropdown-bottom dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="label hover:bg-base-300 m-1 rounded-sm p-2"
+            >
+              <BsThreeDots size={16} />
+            </div>
+            <ul
+              tabIndex={-1}
+              className="dropdown-content menu bg-base-300 rounded-box shadow-base-200 z-20 w-35 p-2 shadow-lg inset-shadow-xs inset-shadow-gray-600"
+            >
+              <li>
+                <label
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (activeChatId) {
+                      deleteChat(activeChatId);
+                    }
+                  }}
+                  className="rounded-box flex items-center"
+                >
+                  <text className="flex-1">Delete</text>
+                  <kbd className="kbd kbd-lg">␡</kbd>
+                </label>
+              </li>
+            </ul>
+          </div>
         </div>
         {isNewChat ? (
           <>
