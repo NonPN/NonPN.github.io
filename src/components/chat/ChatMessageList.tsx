@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import type { Message } from "@/types/chat";
+import { useChatStore } from "@/store/ChatStore";
+import Me from "@/assets/me.jpeg";
 
 interface ChatMessageListProps {
   messages: Message[];
@@ -8,6 +10,7 @@ interface ChatMessageListProps {
 
 const ChatMessageList = ({ messages }: ChatMessageListProps) => {
   const bottomRef = useRef<HTMLDivElement>(null);
+  const { isLoading } = useChatStore();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -24,6 +27,11 @@ const ChatMessageList = ({ messages }: ChatMessageListProps) => {
           timestamp={message.timestamp}
         />
       ))}
+      {isLoading && (
+        <span className="skeleton skeleton-text pl-3">
+          NonPN AI is thinking...
+        </span>
+      )}
       <div ref={bottomRef} />
     </div>
   );
