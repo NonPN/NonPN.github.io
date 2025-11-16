@@ -13,7 +13,7 @@ const ChatMessageList = ({ messages }: ChatMessageListProps) => {
   const { isLoading } = useChatStore();
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [messages]);
 
   return (
