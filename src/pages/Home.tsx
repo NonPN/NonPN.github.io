@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ChatSidebar from "@/components/chat/ChatSidebar";
 import ChatMessageList from "@/components/chat/ChatMessageList";
 import ChatInput from "@/components/chat/ChatInput";
@@ -7,8 +7,11 @@ import { useChatStore } from "@/store/ChatStore";
 import { RiMenuFold2Line } from "react-icons/ri";
 import ChatAbout from "@/components/about/ChatAbout";
 import { BsThreeDots } from "react-icons/bs";
+import { NonPNAI } from "@/services";
 
 export const SIDE_BAR_DRAWER_ID = "chat-sidebar-drawer";
+
+const ai = new NonPNAI();
 
 const Home = () => {
   const {
@@ -46,12 +49,13 @@ const Home = () => {
     setIsNewChat(false);
 
     try {
-      // TODO: Implement AI response logic here
       // Simulating AI response
+      const response = ai.generateAnswer(content);
+
       setTimeout(() => {
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: "This is a simulated AI response.",
+          content: response,
           isAI: true,
           timestamp: new Date().toLocaleTimeString(),
         };
