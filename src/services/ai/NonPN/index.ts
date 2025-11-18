@@ -1,7 +1,11 @@
+import { possibleReplies } from "@/services/ai/NonPN/replies";
+
 export class NonPNAI {
   constructor() {}
 
   generateAnswer(message: string): string {
-    return "This is a simulated AI response.";
+    const replyIndex = Date.now() % possibleReplies.length;
+
+    return possibleReplies[replyIndex];
   }
 }

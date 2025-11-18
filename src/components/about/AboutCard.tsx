@@ -1,5 +1,6 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFileDownload } from "react-icons/fa";
 import { FaRegFaceMehBlank } from "react-icons/fa6";
+import resume from "@/assets/resume.pdf";
 
 const AboutCard = () => {
   return (
@@ -50,6 +51,18 @@ const AboutCard = () => {
               </label>
             </li>
           </ul>
+          <div className="divider">OR</div>
+          <div className="group relative cursor-pointer">
+            <div className="from-primary to-accent absolute -inset-1 rounded-lg bg-linear-to-r opacity-25 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200"></div>
+            <a
+              className="bg-base-200 relative flex items-center justify-center space-x-3 rounded-lg px-1 py-5 leading-none ring-1 ring-gray-900/5"
+              href={resume}
+              download="non_puthikanon_resume.pdf"
+            >
+              <span className="text-xs font-bold">Download my Resume</span>
+              <FaFileDownload size={20} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

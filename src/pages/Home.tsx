@@ -92,13 +92,13 @@ const Home = () => {
       />
       <ChatSidebar onNewChat={handleNewChat} />
       <div className="drawer-content flex h-screen flex-col">
-        <div className="bg-base-200 border-base-300 flex h-15 items-center justify-between gap-5 border-b p-4 shadow-sm">
+        <div className="bg-base-200 border-base-300 flex h-20 items-center justify-between gap-5 border-b p-4 shadow-sm">
           <div className="flex items-center gap-3">
             <label htmlFor={SIDE_BAR_DRAWER_ID} className="lg:hidden">
               <RiMenuFold2Line size={25} />
             </label>
-            <h1 className="text-base-content text-xl font-semibold">
-              AI Chat Assistant
+            <h1 className="text-base-content text-xl font-semibold lg:pl-5">
+              NonPN
             </h1>
           </div>
           <div className="dropdown dropdown-bottom dropdown-end">

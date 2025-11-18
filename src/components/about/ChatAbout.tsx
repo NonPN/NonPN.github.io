@@ -16,7 +16,7 @@ const ChatAbout = ({ onSendMessage }: ChatInputProps) => {
         <p className="text-base-content/70 mb-6 text-center text-sm lg:text-lg">
           I'm a software developer with a passion for building web applications
           and exploring new technologies. Feel free to ask me anything or start
-          a conversation!
+          a conversation! ✨
         </p>
       </div>
       <ChatInput className="min-w-5/6" onSendMessage={onSendMessage} />
