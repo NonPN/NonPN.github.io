@@ -78,9 +78,25 @@ Oh sorry didn't know you were here.
 Want to know more about me right? Here, check out my linkedin [https://linkedin.com/in/non-puthikanon](https://linkedin.com/in/non-puthikanon)
 `;
 
+const shortReply5 = `
+# 👍
+`;
+
+const shortReply6 = `
+# 🫥
+`;
+
+const shortReply7 = `
+Non is not available at the moment ⏼. Please leave a message or visit this site for more information \n
+[https://linkedin.com/in/non-puthikanon](https://linkedin.com/in/non-puthikanon)
+`;
+
 export const possibleReplies = [
   shortResumeReply1,
   shortResumeReply2,
   shortReply3,
   shortReply4,
+  shortReply5,
+  shortReply6,
+  shortReply7,
 ];
