@@ -26,6 +26,9 @@ const ChatSidebar = ({ onNewChat }: ChatSidebarProps) => {
   const onSelectChat = (id: string) => {
     setActiveChat(id);
     setIsNewChat(false);
+    if (window.innerWidth < 1024) {
+      document.getElementById(SIDE_BAR_DRAWER_ID)?.click();
+    }
   };
 
   useEffect(() => {

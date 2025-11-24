@@ -70,6 +70,9 @@ const Home = () => {
 
   const handleNewChat = () => {
     setIsNewChat(true);
+    if (window.innerWidth < 1024) {
+      document.getElementById(SIDE_BAR_DRAWER_ID)?.click();
+    }
   };
 
   useEffect(() => {

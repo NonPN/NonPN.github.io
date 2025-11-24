@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FiChevronsUp } from "react-icons/fi";
 
 export interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -18,10 +19,14 @@ const ChatInput = ({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      if (message.trim() && !isLoading) {
-        onSendMessage(message);
-        setMessage("");
-      }
+      sendMessage();
+    }
+  };
+
+  const sendMessage = () => {
+    if (message.trim() && !isLoading) {
+      onSendMessage(message);
+      setMessage("");
     }
   };
 
@@ -39,7 +44,7 @@ const ChatInput = ({
   return (
     <div className={`p-5 ${className || ""}`}>
       <div
-        className={`bg-base-200 flex min-h-15 items-center gap-4 ${multipleLines ? "rounded-2xl" : "rounded-full"} p-5 shadow-lg inset-shadow-sm`}
+        className={`bg-base-200 flex min-h-15 items-center gap-4 ${multipleLines ? "rounded-2xl" : "rounded-full"} p-3 shadow-lg inset-shadow-sm`}
       >
         <textarea
           ref={ref}
@@ -52,7 +57,14 @@ const ChatInput = ({
           placeholder="Ask anything..."
           autoFocus
         />
-        <kbd className="kbd kbd-lg">⏎</kbd>
+        {/* <kbd className="kbd kbd-lg">⏎</kbd> */}
+        <button
+          className="btn btn-primary h-10 w-10 rounded-full p-0"
+          disabled={message.length == 0}
+          onClick={sendMessage}
+        >
+          <FiChevronsUp size={20} />
+        </button>
       </div>
     </div>
   );
